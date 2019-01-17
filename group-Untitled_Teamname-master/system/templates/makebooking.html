@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+    <br>
+    <h5><i>Booking at {{ HCC }} with {{ HCP }}</i></h5><br>
+    <form method="POST">
+        <h3>Book an Appointment</h3>
+        <div class="container">
+            <label>Select a day</label>
+            <select name="day" class="custom-select">
+            <option value="" disabled selected>Select a day</option>
+            {% if days %}
+                {% for day in days %}
+                <option value="{{ day }}">{{ day }}</option>
+                {% endfor %}
+            {% endif %}
+            </select>
+         </div><br>
+         <div class="container">
+            <label>Select a time</label>
+            <select name="time" class="custom-select"> 
+            <option value="" disabled selected>Select a time</option>
+            {% if times %}
+                {% for time in times %}
+                <option value="{{ time }}">{{ time }}</option>
+                {% endfor %}
+            {% endif %}
+            </select>
+         </div><br>
+
+         <br>
+         <div class="form-group">
+             <label for="exampleFormControlTextarea1" name="reason">Enter a reason for appointment (optional)</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+         </div>
+         <div style="text-align: center;" class="container">
+            <button class="btn btn-primary" type="submit" name="book">Book Appointment</button>
+         </div>
+    </form>
+    
+    <div>
+    {% if invalid %}
+        <h6 style="color: #ff0000">Please fill all the required fields</h6>
+    {% endif %}
+    </div>
+    
+{% endblock %}
+

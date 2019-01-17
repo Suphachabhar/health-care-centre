@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% block content %}
+
+{%if messages %}
+<br>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Thanks for your times!</strong> You already rate our providers and healthcare centres!
+</div>
+
+{% endif %}
+
+        {% if type == 'provider' %}
+        <table class='table'>
+            <tbody>
+
+                <tr style="padding:5px;">
+                    <td>Email</td>
+                    <td>{{info.getEmail}}</td>
+                </tr>
+                <tr>
+                    <td>Type</td>
+                    <td>{{info.getSpecialty}}</td>
+                </tr>
+
+                <tr>
+                    <td>Health centre</td>
+                    <td>
+                        {% for centre in centres %}
+                        <ul>
+                            <li><a href="/profile/healthcentre/{{centre}}">{{centre}}</a></li>
+                        </ul>
+                        {% endfor %}
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Average rating</td>
+                    <td>{{rating}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <h2>Booking:</h2>
+        <p><a class="btn btn-primary" href="/book">Make an appointment</a></p>
+        
+        {% if patient == 1 %}
+        <form method="POST">
+        <h3>Rate this provider:</h3>
+        <div class="input-group">
+            <form method="POST">
+                <select class="custom-select" name="rating" id="inputGroupSelect04" aria-label="Example select with button addon" required>
+                  <option value="" selected>Choose the rating score...</option>
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                </select>
+                <div class="input-group-append">
+                  <button class="btn btn-primary text-white" type="submit">Submit!</button>
+                </div>
+            </form>
+        </div>
+        </form>
+        {% endif %}
+
+
+        {% endif %}
+
+        {% if type == 'healthcentre' %}
+        <table class='table'>
+                <tbody>
+        
+                    <tr style="padding:5px;">
+                        <td>abn</td>
+                        <td>{{info.getAbn}}</td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>{{info.getName}}</td>
+                    </tr>
+                    <tr>
+                        <td>suburb</td>
+                        <td>{{info.getSuburb}}</td>
+                    </tr>
+                    <tr>
+                        <td>phone</td>
+                        <td>{{info.getPhone}}</td>
+                    </tr>
+                    <tr>
+                        <td>service</td>
+                        <td>
+                            {% for service in services %}
+                            <ul>
+                                <li>{{service}}</li>
+                            </ul>
+                            {% endfor %}
+                        </td>
+        
+                    </tr>
+                    <tr>
+                        <td>Rating</td>
+                        <td>{{rating}}</td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td>{{info.getType}}</td>
+                    </tr>
+                    <tr>
+                        <td>Providers</td>
+                        <td>
+                            {% for provider in providers %}
+                            <ul>
+                                <li><a href="/profile/provider/{{provider}}">{{provider}}</a></li>
+                            </ul>
+                            {% endfor %}
+                        </td>
+        
+                    </tr>
+        
+                </tbody>
+            </table>
+        
+        <h2>Booking:</h2>
+        <p><a class="btn btn-primary" href="/book">Make an appointment</a></p>
+        {% if patient == 1 %}
+        <form method="POST">
+        <h3>Rate this healthcentre:</h3>
+        <div class="input-group">
+                <select class="custom-select" name="rating" id="inputGroupSelect04" aria-label="Example select with button addon" required>
+                  <option value="" selected>Choose the rating score...</option>
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                </select>
+                <div class="input-group-append">
+                        <button class="btn btn-primary text-white" type="submit">Submit!</button>
+                </div>
+        </div>
+        </form>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        {% endif %}
+
+        {% endif %}
+    
+
+{% endblock %}

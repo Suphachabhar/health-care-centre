@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Patient Login page</title>
+    </head>
+    <body>
+        <form method="POST">
+            <h1>Patient Login form:</h1>
+            <input placeholder="Enter email address" name="email"/>
+            <input type="password" placeholder="Enter password" name="password"/>
+            <button type="submit">Login</button>
+        </form>
+    <a href="loginProvider">Login in as provider</a>
+        {% if success %}
+        <p> {{success}} </p>
+        {% endif %}
+    </body>
+</html>

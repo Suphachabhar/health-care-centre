@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+<h3>Search for Centres and Providers...</h3>
+<form method="POST">
+    <div class="container">
+        <input type="text" class="custom-select" name="query" value="{{sq}}" placeholder="Enter health care providers or centres..." style="width: 100%;"> 
+    </div>
+    <br>
+    <div class="form-check">
+        <table>
+            <tr>
+                <td>
+                    <input type="radio" class="radio-select" name="SearchType" value="provider" checked="true">
+                    <label>Search by Provider</label>
+                </td>
+                <td>
+                    <input type="radio" class="radio-select" name="SearchBy" value="email" {% if searchby == 'email' %}checked="true"{% endif %}>
+                    <label>Search by Name/Email</label><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+            <input type="radio" class="radio-select" name="SearchType" value="centre" {% if search == 2 %}checked="true"{% endif %}>
+            <label>Search by Centre</label>
+                </td>
+                <td>
+                    <input type="radio" class="radio-select" name="SearchBy" value="specialty" {% if searchby != 'email' %}checked="true"{% endif %}>
+                    <label>Search by Specialty/Suburb</label><br>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="container">
+        <button class="btn btn-primary" type="submit">Search</button> <br>
+    </div>
+    <div class="container">
+    
+    <style>
+        td a {
+            display:block;
+            width:100%;
+        }
+    </style>
+    
+    {% if search == 1 %}
+        <table class='table'>
+        <thead>
+            <tr>
+                <td>
+                    <b>Provider (email):</b>
+                </td>
+                <td>
+                    <b>Specialty:</b>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in providers %}
+                <tr>
+                    <td>
+                        <a href="/profile/provider/{{x.getEmail}}">{{x.getEmail}}</a>
+                    </td>
+                    <td>
+                        {{x.getSpecialty}}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    {% elif search == 2 %}
+        <table class='table'>
+        <thead>
+            <tr>
+                <center>
+                <td>
+                    <b>Name:</b>
+                </td>
+                <td>
+                    <b>Type:</b>
+                </td>
+                <td>
+                    <b>Location:</b>
+                </td>
+                </center>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in centres %}
+                <tr>
+                    <td>
+                        <a href="/profile/healthcentre/{{x.getName}}">{{x.getName}}</a>
+                    </td>
+                    <td>
+                        {{x.getType}}
+                    </td>
+                    <td>
+                        {{x.getSuburb}}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    {% endif %}
+    </div>
+</form>
+
+{% endblock %}

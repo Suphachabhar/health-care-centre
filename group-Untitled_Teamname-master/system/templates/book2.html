@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+    <br>
+    <form method="POST">
+    <h3>Book a Health Care Centre</h3>
+         <div class="container">
+            <label>Select a Health Care Centre</label>
+            <select name="HCC" class="custom-select"> 
+            <option value="" disabled selected>Select a Heath Care Centre</option>
+            {% if HCCS %}
+                {% for HCC in HCCS %}
+                <option value="{{ HCC }}">{{ HCC }}</option>
+                {% endfor %}
+            {% endif %}
+            </select>            
+         </div><br>
+         <div style="text-align: center;" class="container">
+            <button class="btn btn-primary" type="submit" name="enter">Book at Centre</button>
+         
+        
+    </form>
+    
+    <div>
+    {% if invalid %}
+        <h6 style="color: #ff0000">Please select a Health Care Centre</h6>
+    {% endif %}
+    </div>
+    
+{% endblock %}
+

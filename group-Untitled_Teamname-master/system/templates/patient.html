@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Information:</h1>  
+
+        {% if type == 'patient' %}
+        <table class='table'>
+            <tbody>
+                <tr>
+                    <td>email</td>
+                    <td>{{info.getEmail}}</td>
+                </tr>
+                <tr>
+                    <td>phone</td>
+                    <td>{{info.getPhone}}</td>
+                </tr>
+                <tr>
+                    <td>firstname</td>
+                    <td>{{info.getFirstName}}</td>
+                </tr>
+                <tr>
+                    <td>lastname</td>
+                    <td>{{info.getLastName}}</td>
+                </tr>
+                </tbody>
+
+        </table>
+        <h2>Appointment history:</h2>
+        <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Health Provider</th>
+                    <th scope="col">Health centre</th>
+                    <th scope="col"> </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td><a href="/profile/provider/{{provider}}">{{provider}}</a></td>
+                    <td><a href="/profile/healthcentre/{{centre}}">{{centre}}</a></td>
+                    <td><p><a class="btn btn-primary" href="{{url_for('AppointmentHistory')}}">Details</a></p></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td><a href="/profile/provider/{{provider}}">{{provider}}</a></td>
+                    <td><a href="/profile/healthcentre/{{centre}}">{{centre}}</a></td>
+                    <td><p><a class="btn btn-primary" href="/book">Details</a></p></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td><a href="/profile/provider/{{provider}}">{{provider}}</a></td>
+                    <td><a href="/profile/healthcentre/{{centre}}">{{centre}}</a></td>
+                    <td><p><a class="btn btn-primary" href="/book">Details</a></p></td>
+                  </tr>
+                </tbody>
+              </table>
+
+    {% endif %}
+{% endblock %}
