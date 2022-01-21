@@ -20,7 +20,7 @@ h5py==2.7.1
 html5lib==0.999999999
 idna==2.2
 ipykernel==4.8.0
-ipython==5.5.0
+ipython==7.16.3
 ipython-genutils==0.2.0
 ipywidgets==5.2.2
 itsdangerous==0.24
