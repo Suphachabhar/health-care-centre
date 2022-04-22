@@ -79,7 +79,7 @@ pyinotify==0.9.3
 pylint==1.5.2
 pyOpenSSL==16.2.0
 pyparsing==2.0.3
-PyPDF2==1.23
+PyPDF2==1.27.5
 pytest==2.6.3
 python-dateutil==2.0
 python-xlib==0.20
